@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>AGRe Scholarly HTML</title>
+    <link rel="stylesheet" href="public/css/scholarly.min.css">
+    <script src="public/js/scholarly.min.js"></script>
+  </head>
+  <body prefix="schema: http://schema.org">
+    <header>
+      <div class="banner">
+      </div>
+	  <img src="./public/images/logo3.png"/>
+
+    </header>
+    <!--
+      XXX
+      - check refs
+      - the math example has too much maths
+      - bring back some of the old style
+      - make semantics, validation, processing sub-sections of each structural element
+      - have a section before that for general constructs
+        - explain why use RDFa
+        - explain our patterns: RDFa, roles
+      - figure captions need to get set throughout
+      - dedication? see doc-dedication
+      - syntactic constraints (prefix)
+      - needs more sthenurines
+      - examples of everything
+      - some notes on using Semantic CSS
+      - needs more RDFa in the spec itself
+    -->
+    <div role="contentinfo">
+      <dl>
+        <dt>Authors</dt>
+		<dd>
+			Giosanu Eveline Andreea
+          &amp;
+          <a href="https://github.com/EvelineAndreea">GitHub</a>,
+        </dd>
+		<dd>
+			Iacob Andrei Constantin
+          &amp;
+          <a href="https://github.com/AndreiIacob">GitHub</a>,
+        </dd>
+		<dd>
+			Nechita Mihai
+          &amp;
+          <a href="https://github.com/mnechita">GitHub</a>,
+        </dd>
+        <dt>Project Github</dt>
+        <dd>
+          <a href="https://github.com/WADe-AGRe/AGRe">https://github.com/WADe-AGRe/AGRe</a>
+        </dd>
+        <dt>License</dt>
+        <dd>
+          <a href="http://creativecommons.org/licenses/by/4.0/">CC-BY</a>
+        </dd>
+      </dl>
+    </div>
+    <section typeof="sa:Abstract" id="abstract" role="doc-abstract">
+      <h2>Abstract</h2>
+      <p>
+        AGRe (Academic Gossip-based Recommender) is a website that generates recommendations for
+		learning resources (books, on-line documentations, 
+		software tools, existing projects, public code repositories, and others), important persons 
+		(e.g., colleagues, tutors) to be contacted, good/bad points regarding the personal knowledge 
+		on the taught topics, optimal hours of study, etc.
+      </p>
+    </section>
+    <section id="introduction" role="doc-introduction">
+      <h2>Introduction</h2>
+	  <p>
+        As our society becomes ever more complex people will require more and more information. To accommodate
+		the need for expertise in ever more diverse and specific areas online resources for learning keep multiplying. 
+		Universities are also providing open access to their courses through the internet and online only courses keep 
+		increasing in number. But the amount of resources available also makes it difficult to find the ones best suited
+		to you and your needs.
+      </p>
+      <p>
+		Identifying the right materials and people to start learning can have a significant impact on what 
+		a student learns and how fast he does it. AGRe will try to make smart recommendations to the user about
+		which books they should read, what courses they should take, who are the experts in the field and what 
+		other resources are available on the web.  
+      </p>
+      <p>
+		To do this AGRe combines several data sources about books, universities, scientific publications and other web 
+		content. The content from several places is aggregated and filtered to better fit the user's query and information
+		we have about them. Information such as the users location could be used to better identify which universities are nearby
+		so courses and professors from these universities would be ranked higher in the search results. Information about the
+		user's language preferences could be used to identify content that is easier for the user to understand etc.
+      </p>
+      <p>
+		To generate good recommendations exploiting all the information we have about the user and the data is important.
+		To do this we must create user profiles, track information about what queries are made and what resources are used.
+		We can combine this information to generate the show the most appropriate content for that specific user using a 
+		technique called <a href="https://en.wikipedia.org/wiki/Collaborative_filtering">Collaborative Filtering</a>.
+		This technique takes into account the users previously used resources and recommends learning materials that users who
+		have used similar resources have selected but this user has not. 
+      </p>
+	  <p>
+		To allow this project to be reused and understood by machines the results will integrate information about the type of
+		resource in each result and various properties related to it. To do this we use RDF metadata incorporated into the HTML 
+		in format called RDFa. We will also be using popular open ontologies such as <a href="https://schema.org/">schema.org</a> to 
+		provide an easily understood structure to the data that can be combined with and incorporated into other applications 
+		that use the same ontologies.
+      </p>
+	  <p>
+		To make interacting with our system as easy as possible we will create a bot that tries to accommodate talking using natural 
+		language. The bot will look for keywords and use natural language attributes such as dependencies to identify the topics the user 
+		is querying and then query AGRe and display the results in a way that fits the context in which it is being used. The bot will remember
+		what the user said in the past and incorporate that into the resulting query. The bot will also aid in creating the user profiles 
+		by asking the user questions and saving the results.
+      </p>
+	  <p>
+		For machines to be able to use AGRe we need to provide a different interface that relies less on visual elements or natural language
+		but is still expressive enough to allow the use of all of AGRe's functionalities. For this we will provide a SPARQL endpoint. The 
+		SPARQL language allows developers to create queries that are specific to their needs by providing the query along with 
+		optional parameters that filter the data. Another advantage of SPARQL is its ability to query related objects along with specific properties. 
+      </p>
+      <p>
+        Our high-level goals are to:
+      </p>
+      <ul>
+        <li>To access a comprehensive list of resources for learning using other APIs and public datasets.</li>
+        <li>Combine and filter the resulting list for specific queries.</li>
+        <li>
+          Generate user and resource profiles and use them to make useful recommendations.
+        </li>
+        <li>Embed semantic data so as to be part of the Semantic Web.</li>
+        <li>Provide easy to use interfaces for both humans and machines.</li>
+      </ul>
+      <p>
+        We hope AGRe will be useful in both helping learners by providing the right materials and highlighting the 
+		best content and people so that useful resources will continue to be developed and used. This objective is important
+		now and is becoming increasingly more so as new technologies are developed and companies create new roles that demand 
+		more specialization. So we hope that AGRe will be easy to integrate with future applications so that as many people as 
+		possible get to become their best selves.
+      </p>
+    </section>
+    <section id="resources">
+      <h2>Resources</h2>
+	       <section id="Courses">
+	       <h3>Courses</h3>
+			  <p>
+						Courses are units of teaching that typically lasts one academic term, are led by one or more instructors and are 
+					usually taught at universities. 
+					<ul>
+				
+				<li><b>Model:</b> <a href="https://schema.org/Course">Course</a> and <a href="https://schema.org/CourseInstance">CourseInstance</a> (from <a href="https://schema.org/">schema.org</a>) </li>
+				<li><b>Useful APIs and other sources:</b> 
+					<ul>
+						<li> <a href="https://www.mooc-list.com/">mooc-list</a> </li>
+						<li> <a href="https://www.oeconsortium.org/courses/search">Open Education Consortium website</a> </li>
+					</ul>
+				</li>
+				<li><b>Motivation:</b> students as most people are familiar with them, universities are commonly ranked and can be used to determine
+						their importance, professors are generally guaranteed to be qualified and accreditation of its completion can be 
+						provided</li>
+				<li><b>Downsides:</b> prohibitive costs, the need to be present at a specific location 
+						and the limitation that they, almost always, tackle larger subjects, span several months with a fixed schedule (solution: Massive open online courses (MOOCs) alleviate most of these problems although their degrees tend to hold less value)</li>
+			</ul> 
+				 
+			  </p>
+			</section>
+		   <section id="Books">
+	       <h3>Books</h3>
+			  <p>
+				Books are written or printed work consisting of pages glued or sewn together along one side and bound in covers. 
+				eBooks are digital scans of books usually in the form of a PDF file. 
+				<ul>
+						<li><b>Model:</b> <a href="https://schema.org/Book">Book</a> (from <a href="https://schema.org/">schema.org</a>) </li>
+						<li><b>Useful APIs and other sources:</b> <a href="https://books.google.com/">Google Books API</a> </li>
+						<li><b>Motivation:</b> 
+							<ul>
+									<li> books are one of the most successful ways we have stored knowledge throughout history</li>
+									<li> the wealth of knowledge stored in books is something everyone can make use of when trying to learn something</li>
+									<li> books can cover subjects in detail </li>
+							</ul>
+						</li>
+						<li><b>Downsides:</b> can suffer from being outdated, poorly written or too expensive (solution: there are many eBooks available for free
+							which can be accessed conveniently at any point during the learning process)</li>	
+					</ul>
+			  </p>
+			</section>
+		   <section id="Scholarly_Articles">
+	       <h3>Scholarly Articles</h3>
+			  <p>
+				Scholarly or peer-reviewed articles are written by experts in academic or professional
+				fields. 
+				<ul>
+						<li><b>Model:</b> <a href="https://schema.org/ScholarlyArticle">ScholarlyArticle</a> (from <a href="https://schema.org/">schema.org</a>) </li>
+						<li><b>Useful APIs and other sources:</b> <a href="https://dev.elsevier.com/cors_examples.html">Elsevier APIs</a> </li>
+						<li><b>Motivation:</b> 
+							<ul>
+									<li> excellent sources for finding out what has been studied or researched on a topic as well </li>
+									<li> find bibliographies that point to other relevant sources of information </li>
+									<li> sometimes the only resources available about a subject are in the form of scholarly articles </li>
+									<li> tend be in-depth analyses on a very specific topics </li>
+							</ul>
+						</li>
+						<li><b>Downsides:</b> can suffer from being outdated (solution: lots of new information is published this way but there are also reviews of past work that show the current state of 
+							research on a topic)</li>	
+					</ul>
+			  </p>
+			</section>
+		   <section id="People">
+	       <h3>People</h3>
+			  <p>
+				Professors and other experts are people with a lot of knowledge about certain topics and, in the case of professors, 
+				engage in teaching others about it and conducting research on their chosen topics.
+				<ul>
+						<li><b>Model:</b> <a href="https://schema.org/Person">Person</a> (from <a href="https://schema.org/">schema.org</a>) </li>
+						<li><b>Useful APIs and other sources:</b> 
+							<ul>
+								<li> we can identify them as authors of books or scholarly articles </li>
+								<li> we can identify them through the courses they teach </li>
+								<li> <a href="https://wiki.dbpedia.org/rest-api">DBpedia</a> </li>
+								<li> identify information about them from and about the institutions they are associated with through the <a href="https://developers.google.com/places/web-service/intro">Google Places API</a> </li>
+							</ul>
+						</li>
+						<li><b>Motivation:</b> 
+							<ul>
+									<li> finding the right person to teach you can have a huge impact when learning </li>
+									<li> the right person can show you how interesting a topic can be and make learning about easier and more fun </li>
+							</ul>
+						</li>
+					</ul>
+			  </p>
+			</section>
+		   <section id="Web_Content">
+	       <h3>Other Web Content</h3>
+			  <p>
+				 There is a lot of useful information on the Web that falls outside of the aforementioned categories. 
+				 <ul>
+						<li><b>Model:</b> <a href="https://schema.org/WebSite">WebSite </a> and  <a href="https://schema.org/WebPage">WebPage </a> (from <a href="https://schema.org/">schema.org</a>) </li>
+						<li><b>Useful APIs and other sources:</b> 
+							<ul>
+								<li> <a href="https://developer.github.com/v3/">GitHub API</a> </li>
+								<li> <a href="https://api.stackexchange.com/docs">Stack Exchange API</a> </li>
+							</ul>
+						</li>
+						<li><b>Motivation:</b> 
+							<ul>
+									<li> Github is a site that maintains repositories for 
+											various projects, most of which are software related. There are many repos which contain example projects and list useful 
+											resources which are very useful for learning at all levels of expertise </li>
+									<li> Stack Exchange is a network of question-and-answer (Q&A) 
+											websites on topics in diverse fields, each site covering a specific topic, where questions, answers, and users are subject 
+											to a reputation award process. The reputation system allows the sites to be self-moderating </li>
+									<li> simple topics can be covered  in the scope of an answer to a question on one of the Stack Exchange sites</li>
+									<li> some questions simply provide a starting point on were to start learning about a topic</li>
+							</ul>
+						</li>
+					</ul>
+			  </p>
+			</section>
+	</section>
+	<section id="Arhitecture">
+	  <h2>Arhitecture</h2>
+		<p>
+		  The main server will be written in <a href="https://www.python.org/">Python</a> using the <a href="https://www.djangoproject.com/">Django</a> framework. For SPARQL and RDFa funcionality we will use <a href="https://github.com/RDFLib/rdflib">RDFlib</a>.
+		  For querying the APIs we will use the <a href="http://docs.python-requests.org/en/master/">requests</a> library and for scraping recevied data when neccesary we will use <a href="https://www.crummy.com/software/BeautifulSoup/bs4/doc/">BeautifulSoup</a>.
+		  For parsing natural language we will use <a href="https://spacy.io/">spaCy</a> and <a href="https://wordnet.princeton.edu/">Wordnet</a> using <a href="http://www.nltk.org/howto/wordnet.html">NLTK's interface</a>.
+		  We will also use <a href="http://surpriselib.com/">Surprise</a> for its implementation of Collaborative Filtering.
+		  For the frontend we will use <a href="https://reactjs.org/">React</a> to make an UI bot and website along with a SPARQL endpoint. 
+		</p>
+		<h3>Motivation of using these technologies and platforms</h3>
+		<p><h4>Python</h4>
+			<ul>
+					<li> is an interpreted high-level dynamically typed programming language for general-purpose programming </li>
+					<li> tries to emulate natural languge thus easing the use </li>
+					<li> tries to remain terse which makes it useful for fast develoment </li>
+			</ul>
+		</p>
+		
+		<p>
+				<h4>Django</h4>
+				<ul>
+					<li> high-level Python Web framework that encourages rapid development and clean, pragmatic design </li>
+					<li> provides quite a lot of functionality which is also  scalable </li>
+					<li> comes integrated with its own templating language </li>
+					<li> most significant feature is the speed with which applications can be build with it </li>
+				</ul> 
+		</p>
+	  <p>
+			<h4> Pyhon Libraries </h4>
+			<ul>
+				<li> <b> Requests</b> is an elegant and simple HTTP library for Python that makes it easy to querry data from the web </li>
+				<li> <b> Beautiful Soup</b> is a Python package for parsing HTML and XML documents.  It creates a parse tree for parsed pages that can be used to extract data from HTML, which is useful for web scraping </li>
+				<li> <b> RDFLib</b> is a Python library for working with RDF, a simple yet powerful language for representing information. This will allow us to leverage the power of the 
+						semantic web to make our application as reusable as possible.</li>
+			</ul>		  
+		</p>
+		<p>
+			<h4> NLP libraries </h4>
+			<ul>
+				<li> <b> spaCy </b> can be used to process natural language queries from a UI bot and extract useful information from plain text. It was built with speed and accuracy in mind choosing to implement and offer good implementations of state-of-the-art techniques. The features that we'll find most useful is its dependency parser and interface to word2vec embeddings </li>
+	      <li> <b> Wordnet </b> lexical database is another useful resource in natural language processing which consits of synsets that have associated various words and relationships. We can use Wordnet to try to extend queries and 
+					make word level inferences </li>		
+			</ul>
+		</p>
+		<p>
+			<h4> Recommender system </h4>
+			
+			<b>Surprise</b> is a Python scikit building and analyzing recommender systems. It provides various ready-to-use prediction algorithms for generating reccomendations.
+		  Among those algorithms are various implementations for collaborative filtering. Collaborative filtering is a method of making automatic predictions (filtering) 
+		  about the interests of a user by collecting preferences or taste information from many users (collaborating). The underlying assumption of the collaborative 
+		  filtering approach is that if a person A has the same opinion as a person B on an issue, A is more likely to have B's opinion on a different issue than that 
+		  of a randomly chosen person. We will use people's uses of various resources as indication of their preferences and try to find resources that other users who
+		  have used similar resources have used.
+		</p>
+		<p> <h4> React </h4>
+			<ul>
+				<li> is a JavaScript library for building user interfaces </li>
+				<li> is widely used by many developers and has become one of the most popular javascript framework ever </li>
+				<li> allows a developer to create reusable components through javascript </li>
+				<li> we choose this framework because its versatility and because of the many resources available for it </li>
+			</ul>
+		</p>
+		<p> <h4> UI bot </h4>
+			<ul>
+				<li> is a computer program which conducts a conversation via auditory or textual methods </li>
+				<li> can be used to offer a way to interact with machines that is closer to the way people interact with each other </li>
+			</ul>
+		</p>
+		<p> <h4> SPARQL </h4>
+			<ul>
+				<li> is an RDF query language—that is, a semantic query language for databases—able to retrieve and manipulate data stored in Resource Description Framework (RDF) format </li>
+				<li> allows us to provide a powerful way to query our application that makes use 
+						of all the structure provided by our use of RDFs and filter specific information which gets rid of unneeded transfers of data and consolidates multiple queries
+						in a traditional REST API </li>
+		  </ul>
+		</p>
+		<h3> General Architecture </h3>
+		<p>
+			Since we need to integrate many external APIs and add a ML module to our search/recommender system we can say we have a complex design. We show it through the diagram below:
+			<figure>
+					<img width=100% src="./public/images/Application Diagram.png"/>
+					<figcaption style="text-align: center;"> Fig. 1 Architecture Design </figcaption>
+					</figure>
+				<h2> ML Module </h2>
+					<p> The ML module will be used to enrich the search results. At a first glance, there are a few algorithms that are useful for our application.
+						<ul>
+							<li> <b>Collaborative Filtering</b> - sort the search results by my the most relevant ones for our user.
+							<li> <b>Fuzzy searching</b> - return search results that do not exactly match the query
+						</ul>
+					<figure>
+						<img width=100% src="./public/images/SearchML.png" title="SearchML"/>
+						<figcaption style="text-align: center;"> Search and ML module interaction </figcaption>
+					</figure>
+					</p>
+				<h2> External APIs </h2>
+				<p> We will use different APIs in order to provide all kinds of resources when a user requests 
+				<h3> Google Books API </h3>
+				<ul>
+					<li> this API we'll offer us the needed information for a <i>Book</i> resource </li>
+					<li> relevant information this API provides: 
+					<ul>
+						<li> etag </li>
+						<li> selfLink </li>
+						<li> volumeInfo: title, subtitle, authors, description, mainCategory, categories, averageRating, imageLinks, language </li>
+						<li> review of the user </li>
+						<li> accessInfo: country, publicDomain, epub (isAvailable, downloadLink, acsTokenLink)</li>
+					</ul>
+				</li>
+				</ul>
+
+				<h3> Elsevier Search APIs </h3>
+				<ul>
+					<li> thess API we'll offer us the needed information for an <i>Article</i> resource </li>
+					<li> tested on <a href= "https://api.elsevier.com/content/search/scidir">this endpoint </a> </li>
+					<li> relevant information this API provides: 
+					<ul>
+						<li> link of the article </li>
+						<li> article title </li>
+						<li> creator </li>
+						<li> publication name </li>
+						<li> authors </li>
+						<li> teaser which is a short introduction of the article </li>
+					</ul>
+				</li>
+				</ul>
+
+				<h3> StackExchange APIs </h3>
+				<ul>
+					<li> this API we'll offer us the needed information for a <i>Question</i> or other relevant resource on the searched subject </li>
+					<li> tested on <a href= "ttps://api.stackexchange.com/2.2/search">this endpoint </a> </li>
+					<li> relevant information this API provides: 
+					<ul>
+						<li> tags </li>
+						<li> score of the question </li>
+						<li> last activity's date (helps us to see how relevant it is the information) </li>
+						<li> title of the question </li>
+						<li> link to the question </li>
+					</ul>
+				</li>
+				</ul>
+
+				<h3> GitHub API </h3>
+				<ul>
+					<li> this API we'll offer us the needed information for a <i>Repository</i>, <i>Library</i> resource </li>
+					<li> tested on <a href= "https://api.github.com/repos">this endpoint </a> </li>
+					<li> relevant information this API provides: 
+					<ul>
+						<li> repo name </li>
+						<li> privacy of the repo (we'll show only the public ones) </li>
+						<li> git url </li>
+						<li> contributors </li>
+						<li> tags </li>
+					</ul>
+				</li>
+				</ul>
+				</p>
+		</p>
+	</section>
+	<section id="Flow">
+		<h2> General Flow and User Interface </h2>
+		AGRe is a platform designed for both students and professors. Each of them has different priveleges.
+		<p>
+			If a new user and wants to register in AGRe, he will be needed to fill-in some questions from which our <b>ML module</b> will extract information regarding the <i>Interests</i> (and <i>Tags</i>) a user has.
+			Based on those <i>Interests</i> on the <b>Query Frame</b> or <b>Home page</b> there will be recommended, used by teacher's rank some resources, such as Books, Articles, Online Courses etc.
+		</p>	
+		<p>The flow diagram presents the main actions and processes along a user's session.
+				<figure>
+				<img width=115% src="./public/images/flow-diagram.png" title="Fig. 2"/>
+				<figcaption style="text-align: center;"> Fig. 2 Flow diagram </figcaption>
+				</figure>
+	  </p>
+			<p><b> Query Frame/Home Page </b>
+			<ul>
+				<li> has a menu bar at the <b>top</b> where the user can edit its account or talk to UI bot (see Fig. 3)</li>
+				<li> at the <b>left</b> can be seen a panel with a Search functionality from where the user could search new resources, these resourcces are collected from our <b>SPARQL</b> endpoint which communicates with our <b>third party APIs</b> and the resulted resources are processed after that by our <b>ML module</b> </li>
+				<li> each resource presented in the <i>Resource Panel </i> can be accesed, reviewed and saved in the pocket of the current user </li>	
+				<li> on the <b>right</b> panel there are presented relevant persons that can be contacted if the user would consider it can use his help </li>		
+				<li> on the <b>bottom right</b> it's presented a panel which provides insights (like course duration, timetable, reiews of other students) regarding the course identified through the user's search </li>
+			</ul>
+					<figure>
+					<img width=100% src="./public/images/Home.png" title="Fig. 3"/>
+					<figcaption style="text-align: center;"> Fig. 3 Home Page </figcaption>
+					</figure>
+			</p>
+		
+
+		<p><b> UI bot interface </b>
+			<ul>
+				<li> the UI bot would provide a chatting functionality which will help the user find new resources </li>
+				<li> the UI bot will use NLP in order to process the query of the user and will generate a search query that will be given to the Search module and post-processed by the <b>ML module</b> </li>
+			</ul>
+				<figure>
+					<img width=100% src="./public/images/UIbot.png" title="Fig. 4"/>
+					<figcaption style="text-align: center;"> Fig. 4 UI bot interface </figcaption>
+				</figure>
+		</p>
+
+	</section>
+	<section id="citations">
+		<h3>Citations &amp; References</h3>
+		<li><a rel="nofollow" class="external text" href="http://www.prem-melville.com/publications/recommender-systems-eml2010.pdf">Recommender Systems.</a> Prem Melville and Vikas Sindhwani. In Encyclopedia of Machine Learning, Claude Sammut and Geoffrey Webb (Eds), Springer, 2010.</li>
+		<li><a rel="nofollow" class="external text" href="https://developers.google.com/books/docs/v1/reference/bookshelves">Google Books API</a></li>
+
+	</section>
+      
+  </body>
+</html>
